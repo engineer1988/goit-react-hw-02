@@ -1,0 +1,9 @@
+.feedback_div {
+  text-transform: capitalize;
+}
+.feedback {
+  font-size: 16px;
+}
+.feedback:not(:last-child) {
+  margin-bottom: 10px;
+}
