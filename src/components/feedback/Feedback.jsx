@@ -1,4 +1,5 @@
 import css from "./Feedback.module.css";
+import PropTypes from "prop-types";
 
 const Feedback = ({ good, neutral, bad, totalFeedback }) => {
   return totalFeedback === 0 ? (
@@ -19,4 +20,12 @@ const Feedback = ({ good, neutral, bad, totalFeedback }) => {
     </div>
   );
 };
+
+Feedback.propTypes = {
+  totalFeedback: PropTypes.number,
+  good: PropTypes.number,
+  neutral: PropTypes.number,
+  bad: PropTypes.number,
+};
+
 export default Feedback;

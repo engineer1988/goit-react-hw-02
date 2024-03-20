@@ -5,11 +5,17 @@ import Options from "./options/Options";
 import Feedback from "./feedback/Feedback";
 
 export default function App() {
-  const [values, setValues] = useState({
-    good: 0,
-    neutral: 0,
-    bad: 0,
+  const [values, setValues] = useState(() => {
+    const savedValues = window.localStorage.getItem("saved-values");
+    const savedTotalFeedback = window.localStorage.getItem(
+      "saved-total-feedback"
+    );
+    if (savedTotalFeedback > 0) {
+      return JSON.parse(savedValues);
+    }
+    return { good: 0, neutral: 0, bad: 0 };
   });
+
   const updateGood = () => {
     setValues({
       ...values,
@@ -40,8 +46,12 @@ export default function App() {
   const totalFeedback = values.good + values.neutral + values.bad;
 
   useEffect(() => {
-    window.localStorage.setItem("saved-values", JSON.stringify({ values }));
+    window.localStorage.setItem("saved-values", JSON.stringify(values));
   }, [values]);
+
+  useEffect(() => {
+    window.localStorage.setItem("saved-total-feedback", totalFeedback);
+  }, [totalFeedback]);
 
   return (
     <>

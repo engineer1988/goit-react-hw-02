@@ -1,4 +1,5 @@
 import css from "./Options.module.css";
+import PropTypes from "prop-types";
 
 const Options = ({
   updateGood,
@@ -25,6 +26,14 @@ const Options = ({
       )}
     </div>
   );
+};
+
+Options.propTypes = {
+  totalFeedback: PropTypes.number,
+  updateGood: PropTypes.func,
+  updateNeutral: PropTypes.func,
+  updateBad: PropTypes.func,
+  buttonReset: PropTypes.func,
 };
 
 export default Options;
