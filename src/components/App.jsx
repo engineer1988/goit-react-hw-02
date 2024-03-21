@@ -8,7 +8,7 @@ import Notification from "./notification/Notification";
 export default function App() {
   const [values, setValues] = useState(() => {
     const savedValues = window.localStorage.getItem("saved-values");
-    if (savedValues !== 0) {
+    if (savedValues !== null) {
       return JSON.parse(savedValues);
     }
     return { good: 0, neutral: 0, bad: 0 };
