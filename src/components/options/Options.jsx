@@ -1,22 +1,31 @@
 import css from "./Options.module.css";
 import PropTypes from "prop-types";
 
-const Options = ({
-  updateGood,
-  updateNeutral,
-  updateBad,
-  totalFeedback,
-  buttonReset,
-}) => {
+const Options = ({ updateFeedback, totalFeedback, buttonReset }) => {
   return (
     <div className={css.button_div}>
-      <button onClick={updateGood} className={css.button}>
+      <button
+        onClick={() => {
+          updateFeedback("good");
+        }}
+        className={css.button}
+      >
         good
       </button>
-      <button onClick={updateNeutral} className={css.button}>
+      <button
+        onClick={() => {
+          updateFeedback("neutral");
+        }}
+        className={css.button}
+      >
         neutral
       </button>
-      <button onClick={updateBad} className={css.button}>
+      <button
+        onClick={() => {
+          updateFeedback("bad");
+        }}
+        className={css.button}
+      >
         bad
       </button>
       {totalFeedback > 0 && (
@@ -30,10 +39,8 @@ const Options = ({
 
 Options.propTypes = {
   totalFeedback: PropTypes.number,
-  updateGood: PropTypes.func,
-  updateNeutral: PropTypes.func,
-  updateBad: PropTypes.func,
   buttonReset: PropTypes.func,
+  updateFeedback: PropTypes.func,
 };
 
 export default Options;
